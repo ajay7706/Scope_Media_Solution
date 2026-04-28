@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "vercel-build": "cd scope-agent-hub && npm install && npm run build"
+    "build": "cd scope-agent-hub && npm install && npm run build"
   }
 }
