@@ -32,8 +32,8 @@ app.get('/api', (req, res) => {
     res.send('Scope Media Solution API is running...');
 });
 
-// Handle SPA routing - serve index.html for all non-API routes
-app.get('(.*)', (req, res) => {
+// Handle SPA routing - serve index.html for all non-matched routes
+app.use((req, res) => {
     res.sendFile(path.join(__dirname, '../scope-agent-hub/dist/index.html'), (err) => {
         if (err) {
             res.status(404).send('Frontend not built or index.html missing. Please check build logs.');
