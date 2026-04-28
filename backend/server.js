@@ -11,7 +11,11 @@ const leadRoutes = require('./routes/leadRoutes');
 dotenv.config();
 
 // Connect to database
-connectDB();
+connectDB().then(() => {
+    console.log('Database initialization attempt completed');
+}).catch(err => {
+    console.error('Database initialization failed:', err);
+});
 
 const app = express();
 
@@ -43,8 +47,10 @@ app.use((req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' || !process.env.VERCEL) {
+    app.listen(PORT, '0.0.0.0', () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
 
 module.exports = app;
