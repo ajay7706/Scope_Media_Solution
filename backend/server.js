@@ -33,7 +33,7 @@ app.get('/api', (req, res) => {
 });
 
 // Handle SPA routing - serve index.html for all non-API routes
-app.get('*', (req, res) => {
+app.get('(.*)', (req, res) => {
     res.sendFile(path.join(__dirname, '../scope-agent-hub/dist/index.html'), (err) => {
         if (err) {
             res.status(404).send('Frontend not built or index.html missing. Please check build logs.');
