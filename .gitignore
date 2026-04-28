@@ -1,0 +1,11 @@
+node_modules/
+backend/node_modules/
+scope-agent-hub/node_modules/
+.env
+backend/.env
+uploads/
+backend/uploads/*
+!backend/uploads/.gitkeep
+dist/
+build/
+.DS_Store
